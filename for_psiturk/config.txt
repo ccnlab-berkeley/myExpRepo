@@ -1,0 +1,47 @@
+[HIT Configuration]
+title = Learning game
+description = Learn the rewards from feedback
+amt_keywords = Psychology, experiment
+lifetime = 24
+us_only = true
+approve_requirement = 95
+allow_repeats = false
+contact_email_on_error = ccnlab@berkeley.edu
+ad_group = jspsych simple experiment example
+psiturk_keywords = reinforcement learning memory
+organization_name = UC Berkeley
+browser_exclude_rule = MSIE, mobile, tablet
+
+[Database Parameters]
+database_url = sqlite:///myExp.db
+table_name = mturk
+
+[Server Parameters]
+host = 0.0.0.0
+port = 22362
+cutoff_time = 30
+logfile = server.log
+loglevel = 2
+debug = true
+login_username = 
+login_pw = 
+threads = auto
+
+[Task Parameters]
+experiment_code_version = 1.0
+num_conds = 1
+num_counters = 
+
+[Shell Parameters]
+launch_in_sandbox_mode = true
+use_psiturk_ad_server = true
+ad_location = false
+
+[psiTurk Access]
+psiturk_access_key_id = 
+psiturk_secret_access_id = 
+
+[AWS Access]
+aws_access_key_id = 
+aws_secret_access_key = 
+aws_region = us-west-1
