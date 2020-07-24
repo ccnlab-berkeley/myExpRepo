@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--title will appear on the browser tab-->
+  <title>My Experiment</title>
+  <!--import jquery via google's CDN-->
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'></script>
+  <!--import your css stylesheets-->
+  <link href="static/css/style.css" rel="stylesheet" type="text/css">
+  <!--import jspsych, needed plugins, its css stylesheet-->
+  <link href="static/css/jspsych.css" rel="stylesheet" type="text/css">
+  <script src="static/jspsych/jspsych.js"></script>
+  <script src="static/jspsych/jspsych-html-button-response.js"></script>
+  <script src="static/jspsych/jspsych-html-keyboard-response.js"></script>
+  <script src="static/jspsych/jspsych-categorize-html.js"></script>
+  <!--import underscore to support functions like map, reduce, filter-->
+  <script src="static/lib/underscore-min.js"></script>
+  <!--import papaparse if you need to import CSVs or JSON files-->
+  <script src="static/lib/papaparse.min.js"></script>
+  <!--import d3 for array manipulations like shuffle-->
+  <script src="static/lib/d3.min.js"></script>
+  <!--import your custom js scripts (constant declarations, functions, etc)-->
+  <script src="static/js/initVars.js"></script>
+  <script src="static/js/helper.js"></script>
+  <script src="static/js/createTrial.js"></script>
+  <script src="static/js/createTask.js"></script>
+  <!--import file where you create your instructions-->
+  <script src="static/js/createInstructions.js"></script>
+
+  <!--the following are required for psiturk to work-->
+  <script type="text/javascript">
+      // These fields provided by the psiTurk Server
+      var uniqueId = "{{ uniqueId }}"; // a unique string unique
+      var adServerLoc = "{{ adServerLoc }}"; // the location of your ad (so you can send user back at end of experiment)
+      var mode = "{{ mode }}"; // is this running live, sandbox, or in debug mode?
+      var counterbalance = "{{ counterbalance }}"; // psiturk assigns a counterbalancing value depending on how you set up config.txt
+  </script>
+  <!-- utils.js and psiturk.js provide basic psiturk functionality-->
+  <script src="static/lib/psiturk.js"></script>
+  <script src="static/lib/utils.js"></script>
+  <script src="static/lib/bootstrap.min.js"></script>
+  <!-- new plugin to add questionnaire at end of experiment -->
+  <script src="static/js/questionnaire.js"></script>
+</head>
+<body></body>
+<script type="text/javascript">
+
+// if you're using psiturk, initialize psiturk and preload any files or pages
+var psiturk = new PsiTurk(uniqueId, adServerLoc, mode);
+psiturk.preloadPages(["questionnaire.html"]); // preload questionnaire html page
+psiturk.preloadImages(IMGS); // preload all your stimuli
+
+let subjID = Number(jsPsych.data.getURLVariable("id")); // get subject ID from URL query string
+if (isNaN(subjID)) { // if there is no value, and your counterbalancing depends on your subject ID, generate a random number
+  subjID = getRandomInt(1,10);
+}
+
+let file_name = `myExp_${subjID}`; // create name for your data file
+let n = subjID % 10; // set up your counterbalancing variable
+
+// declare timeline
+let timeline = [];
+
+if(!IS_DEBUG) createInstructions(); // create instructions
+
+Papa.parsePromise(`static/csv/sequence${n}.csv`) // use a Promise if you're importing data
+
+  .then(results => {return createPhase(results);}) // then use previous results as argument for your main experiment function
+
+  .then(timeline => { // take timeline as an argument to run jsPsych.init after all else is done
+    jsPsych.init({
+      timeline: timeline,
+      preload_images: IMGS, // preload IMG here if you're NOT using psiturk
+
+      // save data once jspsych experiment is finished, and show the demographics questionnaire
+      on_finish: function() {
+        psiturk.saveData(Questionnaire());
+      },
+    });
+  });
+
+
+
+</script>
+</html>

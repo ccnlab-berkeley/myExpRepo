@@ -1,0 +1,137 @@
+<html>
+
+<style>
+  /* Slider CSS*/
+  .slider {
+    -webkit-appearance: none;
+    height: 11px;
+    background: #bbb;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+
+  .slider:hover {
+    opacity: 1;
+  }
+
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 8px;
+    height: 15px;
+    background: #eee;
+    cursor: pointer;
+  }
+
+  td {
+    vertical-align: top;
+  }
+
+  table {
+    border-spacing: 1rem;
+  }
+
+</style>
+
+<div id="container-questionnaire">
+    <h1>Congratulations, You've Finished!</h1>
+    <hr>
+
+    <p> Please fill out any portion of the short, ANONYMOUS survey below with which you are comfortable. To complete the HIT, please scroll to the bottom of the page and click the "Submit Response" button. Any information you choose to provide will be collected for our research purposes only.
+    </p>
+
+    <div class="instructions well">
+        <form id="postquiz" action="debrief" method="post">
+            <!-- beginning of a question -->
+            <div class="row question">
+                <div class="col-md-8">
+
+                </div>
+                <table>
+                <tr>
+                <td>
+                <p>What is your sex?</p>
+                <input type="radio" name="gender" value="male"   > Male             <br>
+                <input type="radio" name="gender" value="female" > Female           <br>
+                <input type="radio" name="gender" value="other"  > Other            <br>
+                <input type="radio" name="gender" value="decline"> Decline to State <br>
+                </td>
+
+                <td>
+                <p>What age are you?</p>
+                <div>
+                <input type="range" name="age" min="18" max="41" class="slider" id="ageRange">
+                <label for="volume"><br>Age: <span id="age"></label>
+                </div>
+                <script>
+                  var slider = document.getElementById("ageRange");
+                  var output = document.getElementById("age");
+                  output.innerHTML - slider.value;
+
+                  slider.oninput = function() {
+                    output.innerHTML = this.value;
+                    if (this.value == 41) output.innerHTML = "41+";
+                  }
+                </script>
+                </td>
+                </tr>
+
+                <tr>
+                <td>
+                <p>What formal education do you possess?</p>
+                <input type="radio" name="edu" value="none"   > None                         <br>
+                <input type="radio" name="edu" value="elem"   > Elementary School (K - 5)    <br>
+                <input type="radio" name="edu" value="middle" > Middle School     (6 - 8)    <br>
+                <input type="radio" name="edu" value="high"   > High School       (9 - 12)   <br>
+                <input type="radio" name="edu" value="uni"    > University                   <br>
+                <input type="radio" name="edu" value="grad"   > Graduate/Professional School <br>
+                <input type="radio" name="edu" value="decline"> Decline to State             <br>
+                </td>
+
+                <td>
+                <p>Do you consider yourself any of the following?</p>
+                <input type="checkbox" name="race" value="african"> African American                    <br>
+                <input type="checkbox" name="race" value="asian"  > Asian                               <br>
+                <input type="checkbox" name="race" value="white"  > Caucasian                           <br>
+                <input type="checkbox" name="race" value="native" > Native American                     <br>
+                <input type="checkbox" name="race" value="pacific"> Native Hawaiian or Pacific Islander <br>
+                <input type="checkbox" name="race" value="decline"> Decline to State                    <br>
+                </td>
+
+                <td>
+                <p>What is your ethnicity?</p>
+                <input type="radio" name="ethnicity" value="hispanic"   > Hispanic or Latino     <br>
+                <input type="radio" name="ethnicity" value="nothispanic"> NOT Hispanic or Latino <br>
+                <input type="radio" name="ethnicity" value="decline"    > Decline to State       <br>
+                </td>
+
+                </tr>
+                </table>
+                </font>
+                <br/>
+
+                <!-- <input name="trackerField" type="text" size="10" id="responseDsc" style="display:none"/> -->
+            </div>
+            <!-- end of a question -->
+        </form>
+    </div>
+
+    <hr>
+
+    <div class="instructionsnav">
+        <div class="row">
+            <div class="col-xs-2">
+            </div>
+            <div class="col-xs-7">
+            </div>
+            <div class="col-xs-3">
+                <button type="button" id="submit" value="submit" class="btn btn-primary btn-lg continue">
+                    Submit Response <span class="glyphicon glyphicon-arrow-right"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</html>
