@@ -5,39 +5,29 @@ or "html-keyboard-response" for keys. Check jsPsych to see more configurations. 
 
 const createInstructions = function() {
 timeline.push({
-  type: "html-button-response",
-  stimulus: "<div class='center'><h1>Sort the cards!</h1><br>\
-            <p>In this experiment, you will see a card on the screen. \
-            You will see a set of boxes below each card. \
-            Your goal is to sort the cards into boxes. \
-            To sort a card, press one of the three buttons on the keyboard - C ,V OR B with your dominant hand. \
-            Click on NEXT button to go through the rest of instructions.</p></div>",
-  choices: ["NEXT"],
-  button_html: buttonHTML
+  type: "html-keyboard-response",
+  stimulus: `<div class='center'><h1>Simple RLWM task demo</h1>.<br><br><p>In this study, you will\
+  see images on the screen. When you see an image appear, press the J, K, or L key to respond\
+  to the image. Your goal is to learn which key corresponds to which image.</p></div>`+CONTINUE,
+  choices: [32],
 });
-
 timeline.push({
-  type: "html-button-response",
-  stimulus: "<div class='center'>\
-            <p>Your goal is to figure out how to sort the cards to win points. \
-            How you sort the cards will change for different blocks. \
-            We will tell you the sorting rule before the beginning of each block. \
-            Please respond to every card as quickly and accurately as possible. \
-            If you do not respond, the trial will be counted as a loss. \
-            Each time you sort the card correctly, you will gain 1 point. \
-            Click on NEXT button to go through the rest of instructions.</p></div>",
-  choices: ["NEXT"],
-  button_html: buttonHTML
+  type: "html-keyboard-response",
+  stimulus: `<div class='center'><p>After you press a key, you will receive feedback on whether\
+  you pressed the correct key for that image. Specifically, you will receive +1 point if you were\
+  correct, and 0 otherwise. There is only one correct key per image.</p></div>`+CONTINUE,
+  choices: [32],
 });
-
 timeline.push({
-  type: "html-button-response",
-  stimulus: "<div class='center'>\
-            <p>First you will do a set of practice trials. After the practice section, there will be 8 blocks. \
-            You can rest between each block. \
-            Press a key to begin practice. </p></div>",
-  choices: ["BEGIN"],
-  button_html: buttonHTML
+  type: "html-keyboard-response",
+  stimulus: `<div class='center'><p>You have 1 second to respond. If you don't respond in time, it \
+  will be counted as al loss. Try to respond as quickly and accurately as possible!</p></div>`+CONTINUE,
+  choices: [32],
 });
-
+timeline.push({
+  type: "html-keyboard-response",
+  stimulus: `<div class='center'><p>In this demo there are 2 blocks. You will see the images to learn\
+  at the beginning of each block – take some time to identify the images before the block begins.</p></div>`+CONTINUE,
+  choices: [32],
+});
 }

@@ -17,16 +17,6 @@ const save_data_csv = function(file_name,toSave) {
         }
     });
 }
-const mail_data_csv = function(file_name) {
-    jQuery.ajax({
-        type: 'post',
-        cache: false,
-        url: mail_url,
-        data: {
-            file_name: file_name + '.csv',
-        }
-    });
-}
 
 const save_data_json = function(file_name,toSave) {
     jQuery.ajax({
@@ -37,16 +27,6 @@ const save_data_json = function(file_name,toSave) {
             data_dir: data_dir,
             file_name: file_name + '.json',
             exp_data: toSave.json()
-        }
-    });
-}
-const mail_data_json = function(file_name) {
-    jQuery.ajax({
-        type: 'post',
-        cache: false,
-        url: mail_url,
-        data: {
-            file_name: file_name + '.json',
         }
     });
 }

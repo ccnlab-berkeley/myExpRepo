@@ -8,8 +8,9 @@
 .exp {
   position: absolute;
   min-width: 90%;
-  min-height: 80%;
+  min-height: 90%;
   left: 5%;
+  top: 5%;
 }
 
 h1 {
@@ -21,28 +22,8 @@ p {
   font-size: 1.5em;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
+  color: #222;
 }
-
-
-.ConsentBtn{
-    font-size: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    display: block;
-    font-size: 20px;
-    text-align: center;
-    padding: 15px 25px;
-    cursor: pointer;
-    text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: #000000;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 5px #999;
-}
-
 
 .fb {
   font-size: 200%;
@@ -66,32 +47,23 @@ p {
 }
 
 .stim {
-  top: 45%;
   width: 25%;
-  display: block;
   margin: 0 auto;
-  border: solid 3px black;
+  border: solid 2px #222;
 }
 
-div.box {
-  width: 60%;
+.disp {
+  width: 75%;
   margin: 0 auto;
-  position: absolute;
-  top: 78%;
-  left: 20%;
-}
-
-img.box {
-  position: relative;
-  width: 32.5%;
-  margin: 0 auto;
+  border: solid 2.5px #222;
 }
 
 .continue {
   font-size: 125%;
   margin: 0 auto;
-  bottom: 10%;
-  left: 46.5%;
+  bottom: 5%;
+  left: 25%;
+  width: 50%;
   position: absolute;
 }
 
@@ -102,4 +74,19 @@ img.box {
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+
+table {
+  border-spacing: 0px;
+  text-align: center;
+  width: 75%;
+}
+
+td {
+  vertical-align: middle;
+}
+
+table.center {
+  margin-left: auto;
+  margin-right: auto;
 }

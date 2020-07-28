@@ -10,7 +10,6 @@
   <!--import jspsych, needed plugins, its css stylesheet-->
   <link href="static/css/jspsych.css" rel="stylesheet" type="text/css">
   <script src="static/jspsych/jspsych.js"></script>
-  <script src="static/jspsych/jspsych-html-button-response.js"></script>
   <script src="static/jspsych/jspsych-html-keyboard-response.js"></script>
   <script src="static/jspsych/jspsych-categorize-html.js"></script>
   <!--import underscore to support functions like map, reduce, filter-->
@@ -21,8 +20,7 @@
   <script src="static/lib/d3.min.js"></script>
   <!--import your custom js scripts (constant declarations, functions, etc)-->
   <script src="static/js/initVars.js"></script>
-  <script src="static/js/helper.js"></script>
-  <script src="static/js/createTrial.js"></script>
+  <script src="static/js/helpers.js"></script>
   <script src="static/js/createTask.js"></script>
   <!--import file where you create your instructions-->
   <script src="static/js/createInstructions.js"></script>
@@ -55,13 +53,13 @@ if (isNaN(subjID)) { // if there is no value, and your counterbalancing depends 
   subjID = getRandomInt(1,10);
 }
 
-let file_name = `myExp_${subjID}`; // create name for your data file
-let n = subjID % 10; // set up your counterbalancing variable
+et file_name = `myExp_${subjID}`; // create name for your data file
+let n = 0; //subjID % numConds; // set up your counterbalancing variable
 
 // declare timeline
 let timeline = [];
 
-if(!IS_DEBUG) createInstructions(); // create instructions
+// if(!IS_DEBUG) createInstructions(); // create instructions
 
 Papa.parsePromise(`static/csv/sequence${n}.csv`) // use a Promise if you're importing data
 
@@ -70,7 +68,7 @@ Papa.parsePromise(`static/csv/sequence${n}.csv`) // use a Promise if you're impo
   .then(timeline => { // take timeline as an argument to run jsPsych.init after all else is done
     jsPsych.init({
       timeline: timeline,
-      preload_images: IMGS, // preload IMG here if you're NOT using psiturk
+      preload_images: IMGS, // need to check if this is useful in psiturk version
 
       // save data once jspsych experiment is finished, and show the demographics questionnaire
       on_finish: function() {

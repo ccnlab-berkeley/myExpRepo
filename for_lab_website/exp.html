@@ -10,7 +10,6 @@
   <!--import jspsych, needed plugins, its css stylesheet-->
   <link href="static/css/jspsych.css" rel="stylesheet" type="text/css">
   <script src="static/jspsych/jspsych.js"></script>
-  <script src="static/jspsych/jspsych-html-button-response.js"></script>
   <script src="static/jspsych/jspsych-html-keyboard-response.js"></script>
   <script src="static/jspsych/jspsych-categorize-html.js"></script>
   <!--import underscore to support functions like map, reduce, filter-->
@@ -21,12 +20,12 @@
   <script src="static/lib/d3.min.js"></script>
   <!--import your custom js scripts (constant declarations, functions, etc)-->
   <script src="static/js/initVars.js"></script>
-  <script src="static/js/helper.js"></script>
+  <script src="static/js/helpers.js"></script>
   <script src="static/js/createTask.js"></script>
   <!--import file where you create your instructions-->
   <script src="static/js/createInstructions.js"></script>
   <!--import your functions for calling PHP files to save/upload data-->
-  <script src="static/js/saveAndMail.js"></script>
+  <script src="static/js/saveData.js"></script>
 
 </head>
 <body></body>
@@ -38,12 +37,12 @@ if (isNaN(subjID)) { // if there is no value, and your counterbalancing depends 
 }
 
 let file_name = `myExp_${subjID}`; // create name for your data file
-let n = subjID % 10; // set up your counterbalancing variable
+let n = 0; //subjID % numConds; // set up your counterbalancing variable
 
 // declare timeline
 let timeline = [];
 
-if(!IS_DEBUG) createInstructions(); // create instructions
+// if(!IS_DEBUG) createInstructions(); // create instructions
 
 Papa.parsePromise(`static/csv/sequence${n}.csv`) // use a Promise if you're importing data
 
@@ -61,7 +60,7 @@ Papa.parsePromise(`static/csv/sequence${n}.csv`) // use a Promise if you're impo
   // jsPsych.init({
   //   timeline: timeline,
   //   preload_images: IMGS,
-  });
+  // });
 
 </script>
 </html>
