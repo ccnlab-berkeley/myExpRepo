@@ -60,7 +60,7 @@ const createBlock = function(b,seqs) {
     let stim = "<div class='exp'><p>Take some time to identify the images below:</p><table class='center'>";
     for (s=1; s < setSize+1; s++) {
       if (s%3 == 1) stim += '<tr>'
-      stim += `<td><img class="disp" src="${imgP}images${folder}/image${s}.png"></td>`;
+      stim += `<td><img class="disp" src="${imgP}images${folder}/image${s}.jpg"></td>`;
       if (s%3 == 0) stim += '</tr>'
     }
     trial.stimulus = `${stim}</table></div>`+CONTINUE;
@@ -121,7 +121,7 @@ const createTrial = function(b,t,folder,stim,cor,bStart) {
 
   const setTrial = function(trial) {
     console.log(folder);
-    trial.stimulus = `<div class="exp"><img class="stim center" src="${imgP}images${folder}/image${stim}.png"></div>`;
+    trial.stimulus = `<div class="exp"><img class="stim center" src="${imgP}images${folder}/image${stim}.jpg"></div>`;
     trial.key_answer = KEYS[cor];
     return trial;
   }

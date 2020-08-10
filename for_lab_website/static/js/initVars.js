@@ -10,7 +10,7 @@ const SETSIZES =[2,3,4,5,6];
 const NUM_BLOCKS = 2; 
 const NUM_STIM_REPS = 13;
 const NUM_CONDS = 10;
-const FOLDERS = [2,3,10,13,14,15,17,22]; // names of your image folders
+const FOLDERS = [2,3]; // names of your image folders
 
 // trial timing and timeout parameters
 let FB_DUR = 500; // feedback duration
@@ -26,9 +26,9 @@ const END_LINK = "https://experiments-ccn.berkeley.edu/"
 
 // string array of all img files, each element is the path of an img to import
 const IMGS = [];
-for (f = 0; f < 8; f++) {
+for (f = 0; f < FOLDERS.length; f++) {
   for (i = 1; i < 7; i++) {
-    IMGS.push(`${imgP}images${FOLDERS[f]}/image${i}.png`);
+    IMGS.push(`${imgP}images${FOLDERS[f]}/image${i}.jpg`);
   }
 }
 
