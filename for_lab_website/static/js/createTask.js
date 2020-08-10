@@ -50,12 +50,14 @@ feedback to your participant, so you'll need to push a trial object containing
 points or further instructions. This is a good place to save your data.*/
 
 const createBlock = function(b,seqs) {
-  // stimmap = dict where keys are stimuli and values are either the correct keys or the correct labels
+	// get folders, setsize, number of trials for this block
   let bStart = seqs.allBlocks.indexOf(b);
   let setSize = seqs.setSizes[bStart];
   let folder = seqs.imgFolders[bStart];
   let numTrials = setSize * NUM_STIM_REPS;
 
+	// a helper function that adds all the image stimuli for this block. this allows the image files
+	// to be dynamically created at the start of each block, so the images will be different to each block according to the image folder.
   const setStim = function(trial) {
     let stim = "<div class='exp'><p>Take some time to identify the images below:</p><table class='center'>";
     for (s=1; s < setSize+1; s++) {
@@ -65,6 +67,8 @@ const createBlock = function(b,seqs) {
     }
     trial.stimulus = `${stim}</table></div>`+CONTINUE;
     return trial;
+		
+	// push the instructions showing all block images to timeline before trials
   }
   timeline.push({
     on_start: setStim,
@@ -73,6 +77,7 @@ const createBlock = function(b,seqs) {
     // you may want to make this timed so participants can't stay on this trial forever
   });
 
+	// 	create trials, interleaving them with fixation
   for (t = 0; t < numTrials; t++) {
     timeline.push(fixation);
     let stim = seqs.allStims[bStart+t];
@@ -118,21 +123,21 @@ Note: I don't advise saving per trial, especially not saving cumulative data: it
 costs memory allocation and storage space on the server. */
 
 const createTrial = function(b,t,folder,stim,cor,bStart) {
-
+	// helper function that dynamically determines the stimulus as it creates each trial
   const setTrial = function(trial) {
     console.log(folder);
     trial.stimulus = `<div class="exp"><img class="stim center" src="${imgP}images${folder}/image${stim}.jpg"></div>`;
     trial.key_answer = KEYS[cor];
     return trial;
   }
+	// helper function that dynamically updates the data object with info like key press. you can add other values to data as needed
   const setData = function(data) {
     let answer = data.key_press;
     data.stimulus = stim;
-    data.key_answer = cor;
     data.key_press = KEYS.indexOf(answer);
     return data;
   }
-
+	// initialize the trial object
   let trial = {
     type: "categorize-html",
     correct_text: COR_FB,
