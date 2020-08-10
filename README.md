@@ -13,8 +13,8 @@ This folder contains files and folders needed for an experiment that will be hos
   * js: contains Javascript files written for the experiment to help with the logic of experiment and trial structure.
   * jspsych: contains jspsych.js and other jspsych plugins that create basic trial objects
   * lib: contains other Javascript libraries supporting the experiment
-
 Every folder also has a blank index.html. This file prevents visitors from seeing all file content; without it they would be able to navigate through the directory.
+
 To run this exp.html locally, you'll need to download a text editor like <a href="http://brackets.io">brackets</a> and use its live preview option.
 
 ## for_psiturk
