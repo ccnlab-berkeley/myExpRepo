@@ -83,7 +83,7 @@ const createBlock = function(b,seqs) {
   /*A helper function that updates points earned for that block. It also saves all of the
   data if it's the last block, or data for just that block if it's not the last block.*/
   const setPoints = function(trial) {
-    if (b == d3.max(seq.allBlocks)+1) { // if end of last block
+    if (b == d3.max(seqs.allBlocks)+1) { // if end of last block
       let toSave = jsPsych.data.get(); // save all of the data
       save_data_csv(file_name,allData); // call save function
     }

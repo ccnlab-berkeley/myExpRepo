@@ -1,9 +1,8 @@
 /* These functions will call the PHP files used for saving and uploading your data.
 You will only have to change the three string variables outside the functions. */
 
-const save_url = "https://experiments-ccn.berkeley.edu/yourExp/save_data.php"; // URL of the save PHP file
+const save_url = "https://experiments-ccn.berkeley.edu/demoRLWM/save_data.php"; // URL of the save PHP file
 const data_dir = "data";
-const mail_url = "https://experiments-ccn.berkeley.edu/yourExp/data/mailer.php" // URL of the mailing PHP file
 
 const save_data_csv = function(file_name,toSave) {
     jQuery.ajax({
