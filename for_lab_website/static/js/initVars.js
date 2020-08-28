@@ -7,7 +7,7 @@ const IS_DEBUG = false;
 // experiment parameters
 const KEYS = [74,75,76]; // numeric codes for j,k,l
 const SETSIZES =[2,3,4,5,6];
-const NUM_BLOCKS = 2; 
+const NUM_BLOCKS = 2;
 const NUM_STIM_REPS = 13;
 const NUM_CONDS = 10;
 const FOLDERS = [2,3]; // names of your image folders
@@ -27,15 +27,16 @@ const CONTINUE = '<p class="continue">[Press SPACE to continue]</p>'; // instruc
 const END_LINK = "https://experiments-ccn.berkeley.edu/" // if participants need to be redirected to a page to obtain credit
 
 // string array of all img files, each element is the path of an img to import
-// this is used for preloading 
+// this is used for preloading
 const IMGS = [];
 for (f = 0; f < FOLDERS.length; f++) {
   for (i = 1; i < 7; i++) {
     IMGS.push(`${imgP}images${FOLDERS[f]}/image${i}.jpg`);
   }
 }
+console.log(IMGS);
 
-// this is a fixation trial 
+// this is a fixation trial
 let fixation = ({
     type: "html-keyboard-response",
     stimulus: "<div class='exp'><p class='fix center'>+</p></div>",

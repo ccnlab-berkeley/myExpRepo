@@ -127,7 +127,7 @@ const createTrial = function(b,t,folder,stim,cor,bStart) {
   const setTrial = function(trial) {
     console.log(folder);
     trial.stimulus = `<div class="exp"><img class="stim center" src="${imgP}images${folder}/image${stim}.jpg"></div>`;
-    tria.data.key_answer = cor;
+    trial.data.key_answer = cor;
     trial.key_answer = KEYS[cor];
     return trial;
   }

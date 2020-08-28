@@ -10,9 +10,8 @@ var Questionnaire = function() {
 	record_responses = function() {
 		var question_data = []
 
-		// $('input').each( function(i, val) {
-		// 	psiTurk.recordUnstructuredData(this.id, this.value);
-		// });
+		age = document.getElementById("age");
+		question_data.push(age.name+": "+age.value);
 		$('input:checked').each( function(i, val) {
 			question_data.push(this.name + ': ' + this.value)
 		});
