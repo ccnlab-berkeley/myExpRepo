@@ -25,7 +25,7 @@
   <!--import file where you create your instructions-->
   <script src="static/js/createInstructions.js"></script>
   <!--import your functions for calling PHP files to save/upload data-->
-  <script src="static/js/saveData.js"></script>
+  <script src="static/js/saveAndMail.js"></script>
 
 </head>
 <body></body>
@@ -44,10 +44,10 @@ let timeline = [];
 
 if(!IS_DEBUG) createInstructions(); // create instructions
 
-// use a Promise if you're importing data since it takes longer to import local data than running 
+// use a Promise if you're importing data since it takes longer to import local data than running
 // the functions that create the rest of the task. you can avoid promise chains if you import your
-// sequences that are stored somewhere online via XMLHttpRequest(). 
-Papa.parsePromise(`static/csv/sequence${n}.csv`) 
+// sequences that are stored somewhere online via XMLHttpRequest().
+Papa.parsePromise(`static/csv/sequence${n}.csv`)
 
   .then(results => {return createPhase(results);}) // then use previous results as argument for your main experiment function
 
