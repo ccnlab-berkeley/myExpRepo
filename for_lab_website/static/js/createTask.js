@@ -27,8 +27,7 @@ const createPhase = function(csv) { // create a phase (e.g. training phase) of y
   e.g. 5 seconds, you can call a callback function to then mail off the data.*/
   timeline.push({
     on_start: trial => {
-      let toSave = jsPsych.data.get().filter({trial_type: 'trial'}); // retrieve all trial data from all blocks to save
-      // if you want to save everything (beyond actual task trials), remove everything after get(), i.e. let toSave = jsPsych.data.get();
+      let toSave = jsPsych.data.get(); // retrieve all data to save
       save_data_csv(file_name,toSave); // save final file as csv
     },
     type: "html-keyboard-response",
@@ -139,7 +138,6 @@ const createTrial = function(b,t,folder,stim,cor,bStart) {
     let answer = data.key_press;
     data.stimulus = stim;
     data.key_press = KEYS.indexOf(answer);
-    data.trial_type = 'trial';
     return data;
   }
 	// initialize the trial object
