@@ -23,6 +23,7 @@ This folder contains files and folders needed for an experiment that will run wi
 * templates: a folder containing different HTML files, including the page of the actual experiment (exp.html)
   * exp.html will be different from the lab website counterpart due to its psiTurk dependencies.
   * questionnaire.html contains a basic demographic questionnaire to complete at the end of the behavioral task.
+  * others:ad.html is the ad Turkers will see before starting the HIT, consent.html is a short consent form before starting, complete.html is what they see upon completion (after completing questionnaire), thanks.html for partial completion/sandbox debug HIT, etc. 
 * static: folder that contains needed CSS/Javascript files, Javascript libraries, image files for stimuli, CSV sequences to import
 Every folder also has a blank index.html. This file prevents visitors from seeing all file content; without it they would be able to navigate through the directory. The contents are almost the exact same, except for these folders:
   * js: additionally contains a questionnaire.js file that will pull up the questionnaire.html page and record what subjects input onto the page
