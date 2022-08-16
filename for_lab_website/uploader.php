@@ -12,18 +12,18 @@ if (isset($_POST['file_name']) == true)
 
 // temporary names for debugging
 // $data_dir = 'data';
-// $file_name = 'RLEM_c2_subj3_2021-5-27_18_21.csv';
+// $file_name = '';
 
 $url = 'https://upload.box.com/api/2.0/files/content';
 $json = json_encode(array(
 'name' => $file_name, // file name to be created on the box -- should be $file_name like mailer.php
-'parent' => array('id' => 167953073183) // habits task folder
+'parent' => array('id' => 123) // enter the URL of the new Box task data folder here
 ));
 $params = array(
 'attributes' => $json,
 
 'file'=>new \CurlFile($data_dir.'/'.$file_name, // name (+ directory) of file to be uploaded
-                     'application/json',//'text/csv', // MIME type of file
+                     'application/json',//'text/csv', // MIME type of file - change based on if your data is .csv or .json
                      $file_name // name of file in upload data
                     )
 );
